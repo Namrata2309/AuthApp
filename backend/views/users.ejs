@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>All Users</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+  <div class="container">
+    <h1>Registered Users</h1>
+
+    <ul>
+      <% users.forEach(user => { %>
+        <li>
+          <strong><%= user.name %></strong> |
+          <%= user.email %> |
+          Age: <%= user.age %>
+        </li>
+      <% }) %>
+    </ul>
+
+    <a href="/">Add New User</a>
+  </div>
+
+</body>
+</html>
