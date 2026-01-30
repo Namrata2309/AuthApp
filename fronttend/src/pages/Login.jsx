@@ -72,14 +72,8 @@ export default function Login() {
         }
         
         @keyframes slideIn {
-          from {
-            opacity: 0;
-            transform: translateY(30px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
+          from { opacity: 0; transform: translateY(30px); }
+          to { opacity: 1; transform: translateY(0); }
         }
         
         .login-title {
@@ -89,7 +83,6 @@ export default function Login() {
           margin-bottom: 0.5rem;
           color: var(--brutalist-black);
           text-transform: uppercase;
-          letter-spacing: 0.02em;
         }
         
         .login-subtitle {
@@ -103,7 +96,6 @@ export default function Login() {
         
         .input-group {
           margin-bottom: 1.5rem;
-          position: relative;
         }
         
         .input-label {
@@ -124,14 +116,6 @@ export default function Login() {
           background: var(--brutalist-white);
           font-family: 'Courier Prime', monospace;
           font-size: 1rem;
-          transition: all 0.2s;
-        }
-        
-        .login-input:focus {
-          outline: none;
-          border-color: var(--brutalist-red);
-          box-shadow: 4px 4px 0 var(--brutalist-yellow);
-          transform: translate(-2px, -2px);
         }
         
         .login-button {
@@ -143,48 +127,26 @@ export default function Login() {
           font-family: 'Bebas Neue', sans-serif;
           font-size: 1.5rem;
           text-transform: uppercase;
-          letter-spacing: 0.05em;
           cursor: pointer;
-          position: relative;
-          transition: all 0.2s;
           margin-top: 1rem;
         }
-        
-        .login-button:hover {
-          background: var(--brutalist-red);
-          border-color: var(--brutalist-red);
-          box-shadow: 6px 6px 0 var(--brutalist-yellow);
-          transform: translate(-3px, -3px);
+
+        .register-link {
+          margin-top: 1.5rem;
+          text-align: center;
+          font-family: 'Courier Prime', monospace;
+          font-size: 0.85rem;
         }
-        
-        .login-button:active {
-          box-shadow: 2px 2px 0 var(--brutalist-yellow);
-          transform: translate(-1px, -1px);
-        }
-        
-        .decorative-bar {
-          position: absolute;
-          left: -1rem;
-          top: 3rem;
-          width: 6px;
-          height: 120px;
-          background: var(--brutalist-yellow);
-          animation: barSlide 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.2s backwards;
-        }
-        
-        @keyframes barSlide {
-          from {
-            height: 0;
-          }
-          to {
-            height: 120px;
-          }
+
+        .register-link span {
+          color: var(--brutalist-red);
+          cursor: pointer;
+          font-weight: 700;
         }
       `}</style>
       
       <div className="login-container">
         <form onSubmit={handleLogin} className="login-form">
-          <div className="decorative-bar"></div>
           <h2 className="login-title">Login</h2>
           <p className="login-subtitle">Access Required</p>
 
@@ -192,8 +154,8 @@ export default function Login() {
             <label className="input-label">Email Address</label>
             <input
               className="login-input"
-              placeholder="your@email.com"
               type="email"
+              placeholder="your@email.com"
               onChange={(e) => setEmail(e.target.value)}
             />
           </div>
@@ -211,6 +173,13 @@ export default function Login() {
           <button className="login-button" type="submit">
             Enter System
           </button>
+
+          <div className="register-link">
+            New here?{" "}
+            <span onClick={() => navigate("/register")}>
+              Create an account
+            </span>
+          </div>
         </form>
       </div>
     </>

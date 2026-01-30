@@ -1,7 +1,10 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import api from "../api/api";
 
 export default function Register() {
+  const navigate = useNavigate();
+
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -17,6 +20,7 @@ export default function Register() {
     try {
       await api.post("/api/auth/register", form);
       alert("Registered successfully");
+      navigate("/dashboard");
     } catch (err) {
       alert(err.response?.data?.message || "Error");
     }
@@ -260,59 +264,25 @@ export default function Register() {
           }
         }
       `}</style>
-      
+
       <div className="register-container">
-        <div className="floating-orb orb-1"></div>
-        <div className="floating-orb orb-2"></div>
-        <div className="floating-orb orb-3"></div>
-        
         <form onSubmit={handleSubmit} className="register-form">
-          <div className="accent-blob"></div>
           <h2 className="register-title">Join us</h2>
-          <p className="register-subtitle">Create your account to get started</p>
-          
-          <div className="form-field">
-            <input 
-              className="register-input"
-              name="name" 
-              placeholder="Full name" 
-              onChange={handleChange} 
-            />
-          </div>
-          
-          <div className="form-field">
-            <input 
-              className="register-input"
-              name="email" 
-              placeholder="Email address" 
-              type="email"
-              onChange={handleChange} 
-            />
-          </div>
-          
-          <div className="form-field">
-            <input 
-              className="register-input"
-              name="age" 
-              placeholder="Age" 
-              type="number"
-              onChange={handleChange} 
-            />
-          </div>
-          
-          <div className="form-field">
-            <input 
-              className="register-input"
-              type="password" 
-              name="password" 
-              placeholder="Create password" 
-              onChange={handleChange} 
-            />
-          </div>
-          
-          <button className="register-button" type="submit">
-            Create Account
-          </button>
+          <p className="register-subtitle">
+            Create your account to get started
+          </p>
+
+          <input name="name" placeholder="Full name" onChange={handleChange} />
+          <input name="email" placeholder="Email" onChange={handleChange} />
+          <input name="age" placeholder="Age" onChange={handleChange} />
+          <input
+            type="password"
+            name="password"
+            placeholder="Password"
+            onChange={handleChange}
+          />
+
+          <button type="submit">Create Account</button>
         </form>
       </div>
     </>
