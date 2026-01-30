@@ -20,12 +20,14 @@ export const AuthProvider = ({ children }) => {
       .finally(() => setLoading(false));
   }, []);
 
+  // ✅ Correct login (API-only)
   const login = async (email, password) => {
     await api.post("/api/auth/login", { email, password });
     const res = await api.get("/api/dashboard");
     setUser(res.data.user);
   };
 
+  // ✅ Correct logout
   const logout = async () => {
     await api.post("/api/auth/logout");
     setUser(null);
